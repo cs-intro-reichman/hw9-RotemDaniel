@@ -177,15 +177,23 @@ public class LinkedList {
 			throw new IllegalArgumentException(
 					"NullPointerException!");/// ???
 		}
-		if (index == 0) {
-			first = first.next;
-			if(size==1)
-			{last=null;}
+		if (size == 1) {
+			first = null;
+			last = null;
+		}
+		if (size == 2) {
+			first = getNode(size - index - 1);
+			last = first;
 		} else {
-			if (index == size) {
-				last = getNode(size - 1);
+			if (index == 0) {
+				first = first.next;
 			} else {
-				getNode(index - 1).next = getNode(index + 1);
+				if (index == size) {
+					last = getNode(size - 2);
+					last.next = null;
+				} else {
+					getNode(index - 1).next = getNode(index + 1);
+				}
 			}
 		}
 		size--;

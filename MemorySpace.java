@@ -111,6 +111,11 @@ public class MemorySpace {
 		if (m != null) {
 			freeList.addLast(m);
 			allocatedList.remove(m);
+		} else {
+
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+
 		}
 	}
 
