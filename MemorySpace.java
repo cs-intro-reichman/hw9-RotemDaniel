@@ -135,7 +135,25 @@ public class MemorySpace {
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		/// TODO: Implement defrag test
-		//// Write your code here
+		boolean defrager = false;// check if tere was a defrag
+		for (int i = 0; i < freeList.getSize(); i++) {
+			MemoryBlock m = freeList.getBlock(i);
+			MemoryBlock check = null;
+			int sum = m.baseAddress + m.length;
+			ListIterator itr = freeList.iterator();
+			while (itr.hasNext()) {
+				check = itr.next();
+				if (sum == check.baseAddress) {
+					m.length = m.length + check.length;
+					freeList.remove(check);
+					defrager = true;
+					break;
+				}
+
+			}
+		}
+		if (defrager) {
+			defrag();
+		}
 	}
 }
