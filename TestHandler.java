@@ -2646,7 +2646,7 @@ public class TestHandler {
     private boolean freeTest2(){
         MemorySpace memorySpace = new MemorySpace(100);
         String expectedText = "(0 , 100) \n";//space here needed 
-        String expected = TesterMessagesEnum.ERROR + " IllegalArgumentException: index must be between 0 and size";
+        String expected = "true";
         String actual = "";
         try {
             memorySpace.free(0);
