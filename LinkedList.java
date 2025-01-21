@@ -180,19 +180,20 @@ public class LinkedList {
 		if (size == 1) {
 			first = null;
 			last = null;
-		}
-		if (size == 2) {
-			first = getNode(size - index - 1);
-			last = first;
 		} else {
-			if (index == 0) {
-				first = first.next;
+			if (size == 2) {
+				first = getNode(size - index - 1);
+				last = first;
 			} else {
-				if (index == size) {
-					last = getNode(size - 2);
-					last.next = null;
+				if (index == 0) {
+					first = first.next;
 				} else {
-					getNode(index - 1).next = getNode(index + 1);
+					if (index == size-1) {
+						last = getNode(size - 2);
+						last.next = null;
+					} else {
+						getNode(index - 1).next = getNode(index + 1);
+					}
 				}
 			}
 		}
@@ -227,7 +228,7 @@ public class LinkedList {
 		int index = indexOf(block);
 		if (index == -1) {
 			throw new IllegalArgumentException(
-					"block not in the list");/// needed?
+					"index must be between 0 and size");/// needed?
 		}
 		remove(index);
 	}
