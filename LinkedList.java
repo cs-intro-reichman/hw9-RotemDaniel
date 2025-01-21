@@ -183,12 +183,13 @@ public class LinkedList {
 		} else {
 			if (size == 2) {
 				first = getNode(size - index - 1);
-				first.next=null;
+				first.next = null;
+				last = first;
 			} else {
 				if (index == 0) {
 					first = first.next;
 				} else {
-					if (index == size-1) {
+					if (index == size - 1) {
 						last = getNode(size - 2);
 						last.next = null;
 					} else {
