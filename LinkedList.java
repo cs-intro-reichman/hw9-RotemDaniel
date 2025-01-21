@@ -141,7 +141,7 @@ public class LinkedList {
 	 *                                  equal to size
 	 */
 	public MemoryBlock getBlock(int index) {
-		if (index < 0 || index > size) {
+		if (index < 0 || index > size || size == 0) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
 		}
@@ -175,17 +175,19 @@ public class LinkedList {
 		int index = indexOf(node.block);
 		if (index == -1) {
 			throw new IllegalArgumentException(
-					"node not in the list");/// needed?
+					"NullPointerException!");/// ???
 		}
 		if (index == 0) {
 			first = first.next;
-		}
-		else{
-		if (index == size) {
-			last = getNode(size - 1);
+			if(size==1)
+			{last=null;}
 		} else {
-			getNode(index - 1).next = getNode(index + 1);
-		}}
+			if (index == size) {
+				last = getNode(size - 1);
+			} else {
+				getNode(index - 1).next = getNode(index + 1);
+			}
+		}
 		size--;
 	}
 
